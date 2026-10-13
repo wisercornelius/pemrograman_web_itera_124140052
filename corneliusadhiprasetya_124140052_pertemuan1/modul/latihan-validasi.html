@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Latihan Validasi Form</title>
+<style>body{font-family:sans-serif;max-width:500px;margin:30px auto}input{width:100%;padding:8px;margin:4px 0}small{color:red}</style>
+</head>
+<body>
+<h3>Latihan 1: Validasi Form</h3>
+<input id="nama" placeholder="Nama barang (min 3 karakter)">
+<small id="e"></small><br>
+<button onclick="cek()">Cek</button>
+<script>
+function cek(){
+  const v=document.getElementById('nama').value.trim();
+  document.getElementById('e').textContent = v.length<3 ? 'Minimal 3 karakter!' : 'Valid!';
+}
+</script>
+</body>
+</html>

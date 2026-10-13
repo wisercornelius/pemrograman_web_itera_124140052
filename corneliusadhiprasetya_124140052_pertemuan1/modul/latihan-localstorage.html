@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Latihan LocalStorage</title>
+<style>body{font-family:sans-serif;max-width:500px;margin:30px auto}input{width:100%;padding:8px;margin:4px 0}</style>
+</head>
+<body>
+<h3>Latihan 3: LocalStorage JSON</h3>
+<input id="data" placeholder="Ketik sesuatu">
+<button onclick="simpan()">Simpan (stringify)</button>
+<button onclick="muat()">Muat (parse)</button>
+<button onclick="hapus()">Hapus</button>
+<p id="out"></p>
+<script>
+const KEY='latihanPos';
+function simpan(){ localStorage.setItem(KEY, JSON.stringify({isi:document.getElementById('data').value})); muat(); }
+function muat(){ const raw=localStorage.getItem(KEY); document.getElementById('out').textContent = raw ? JSON.parse(raw).isi : '(kosong)'; }
+function hapus(){ localStorage.removeItem(KEY); muat(); }
+muat();
+</script>
+</body>
+</html>

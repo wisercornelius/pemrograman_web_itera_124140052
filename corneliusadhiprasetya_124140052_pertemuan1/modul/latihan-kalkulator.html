@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Latihan Kalkulator</title>
+<style>body{font-family:sans-serif;max-width:500px;margin:30px auto}input{width:100%;padding:8px;margin:4px 0}</style>
+</head>
+<body>
+<h3>Latihan 2: Kalkulator Subtotal & Diskon</h3>
+<input id="harga" type="number" placeholder="Harga">
+<input id="qty" type="number" placeholder="Qty">
+<button onclick="hitung()">Hitung</button>
+<p id="out"></p>
+<script>
+function hitung(){
+  const total = Number(document.getElementById('harga').value) * Number(document.getElementById('qty').value);
+  const diskon = total >= 50000 ? total*0.1 : 0;
+  document.getElementById('out').textContent = `Total: ${total}, Diskon: ${diskon}, Bayar: ${total-diskon}`;
+}
+</script>
+</body>
+</html>

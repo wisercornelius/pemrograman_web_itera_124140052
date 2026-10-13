@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini POS — Kasir Kantin Kampus</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div>
+        <h1>Mini POS <span>Kantin Kampus</span></h1>
+        <p class="subtitle">Kasir &amp; Keranjang Belanja Sederhana — corneliusadhiprasetya_124140052_pertemuan1</p>
+      </div>
+      <div class="badge">PAW • Pertemuan 1</div>
+    </div>
+  </header>
+
+  <main class="container grid">
+    <!-- Form Input Barang -->
+    <section class="card">
+      <h2>1. Input Barang</h2>
+      <form id="formBarang" novalidate>
+        <div class="field">
+          <label for="namaBarang">Nama Barang</label>
+          <input type="text" id="namaBarang" placeholder='Contoh: "Buku Tulis", "Air Mineral"' autocomplete="off" />
+          <small class="error" id="errNama"></small>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="hargaSatuan">Harga Satuan (Rp)</label>
+            <input type="number" id="hargaSatuan" min="0" step="any" placeholder="Contoh: 5000" />
+            <small class="error" id="errHarga"></small>
+          </div>
+          <div class="field">
+            <label for="qty">Jumlah / Qty</label>
+            <input type="number" id="qty" min="1" step="1" placeholder="Contoh: 2" />
+            <small class="error" id="errQty"></small>
+          </div>
+        </div>
+
+        <button type="submit" class="btn primary">+ Tambah ke Keranjang</button>
+        <p class="hint">Syarat: nama ≥ 3 karakter • harga ≥ Rp 500 • qty bulat ≥ 1</p>
+      </form>
+    </section>
+
+    <!-- Kalkulator Diskon & Pembayaran -->
+    <section class="card">
+      <h2>2. Diskon &amp; Pembayaran</h2>
+
+      <div class="field">
+        <label for="kodePromo">Kode Promo <span class="muted">(opsional)</span></label>
+        <div class="promo-row">
+          <input type="text" id="kodePromo" placeholder='Coba: HEMAT10' autocomplete="off" />
+          <button type="button" id="btnPromo" class="btn secondary">Terapkan</button>
+        </div>
+        <small class="info" id="infoPromo">Diskon otomatis 10% jika total ≥ Rp 50.000, atau gunakan kode HEMAT10.</small>
+      </div>
+
+      <div class="field">
+        <label for="uangBayar">Uang Bayar (Rp)</label>
+        <input type="number" id="uangBayar" min="0" step="any" placeholder="Contoh: 100000" />
+        <small class="error" id="errBayar"></small>
+      </div>
+
+      <div class="summary">
+        <div class="sum-row"><span>Total Belanja</span><strong id="totalBelanja">Rp 0</strong></div>
+        <div class="sum-row"><span>Diskon (10%)</span><strong id="nominalDiskon">Rp 0</strong></div>
+        <div class="sum-row"><span>Kode Promo Aktif</span><strong id="promoAktif">-</strong></div>
+        <div class="sum-row grand"><span>Total Akhir Bayar</span><strong id="totalAkhir">Rp 0</strong></div>
+        <div class="sum-row grand"><span>Kembalian</span><strong id="kembalian">Rp 0</strong></div>
+        <small class="error" id="infoKembalian"></small>
+      </div>
+
+      <button type="button" id="btnReset" class="btn danger">Transaksi Baru / Reset</button>
+    </section>
+  </main>
+
+  <!-- Tabel Keranjang -->
+  <section class="container card table-card">
+    <div class="table-head">
+      <h2>3. Keranjang Belanja</h2>
+      <span class="muted" id="cartCount">0 item</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama Barang</th>
+            <th>Harga Satuan</th>
+            <th>Qty</th>
+            <th>Subtotal</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="cartBody">
+          <!-- di-render via script.js -->
+        </tbody>
+      </table>
+      <p class="empty" id="emptyMsg">Keranjang masih kosong. Tambahkan barang lewat form di atas.</p>
+    </div>
+  </section>
+
+  <footer class="container footer">
+    <p>Mini POS • Praktikum PAW Pertemuan 1 • Cornelius Adhi Prasetya (124140052) • Data tersimpan di <code>localStorage</code></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
